@@ -1,0 +1,64 @@
+<style lang="less">
+</style>
+<template>
+  <view class="login">
+    <loading></loading>
+    {{$state.login.isLogin}}
+    <button @tap="loginIn">登录</button>
+    <button @tap="loginOut">登出</button>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  import {connect} from 'wepy-redux'
+  import {loginIn, loginOut} from '@/store/actions/login'
+  import Loading from '@/components/loading'
+  /* 静态传值<child title="mytitle"></child>
+  * 动态传值<child :title="parentTitle" :syncTitle.sync="parentTitle" :twoWayTitle="parentTitle"></child> */
+  // 在异步函数中更新数据的时，必须手动调用$apply方法，才会触发脏数据检查流程的运行
+  @connect({
+    isLogin(state) {
+      console.log('=======')
+      console.log(state)
+      return state.login.isLogin
+    }
+  }, {
+    loginInParams:loginIn,
+    loginOutParams: loginOut
+  })
+  export default class Login extends wepy.page {
+    config = {
+      navigationBarTitleText: '登录页面'
+    };
+    components = {
+      loading: Loading
+    };
+    data={};
+    computed = {};
+    methods = {
+      /*
+      存放$broadcase,$emit,$invoke所传递的事件的函数
+      this.$parent访问App实例
+      */
+      loginIn(){
+        this.methods.loginOutParams({isLoading: true, store: this.store})
+      },
+      loginOut() {
+        this.methods.loginOutParams({isLoading: true, store: this.store})
+      }
+    };
+    watch={
+      num(newValue, oldValue) {
+        /* 监听器适用于当属性改变时需要进行某些额外处理的情形
+        * 监听器函数名必须跟需要被监听的data对象中的属性num同名，
+        *
+        * */
+      }
+    }
+    events = {}
+
+    onLoad() {
+      this.store = this.$parent.globalData.store
+    }
+  }
+</script>
