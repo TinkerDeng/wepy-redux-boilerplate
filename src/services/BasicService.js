@@ -8,6 +8,12 @@ import wepy from 'wepy'
 import Config from '../config'
 import Promise from 'promise-polyfill'
 
+class Point{
+
+}
+const point=new Point();
+console.log(point.__proto__);
+
 /**
  *
  * @param {*} api 请求的url（必填）
