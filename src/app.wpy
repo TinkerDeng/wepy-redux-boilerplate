@@ -25,6 +25,7 @@
   export default class extends wepy.app {
     config = {
       pages: [
+        'pages/productList',
         'pages/login'
       ],
       window: {
@@ -32,6 +33,15 @@
         navigationBarBackgroundColor: '#fff',
         navigationBarTitleText: 'WeChat',
         navigationBarTextStyle: 'black'
+      },
+      "tabBar": {
+        "list": [{
+          "pagePath": "pages/login",
+          "text": "登录"
+        }, {
+          "pagePath": "pages/productList",
+          "text": "产品列表"
+        }]
       }
     };
     globalData = {

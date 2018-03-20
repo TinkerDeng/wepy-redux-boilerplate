@@ -1,0 +1,48 @@
+<!--suppress ALL -->
+<style lang="less">
+  .productList{
+    view{
+      margin:10rpx;
+      background-color:#ccc;
+      color:#ff0000;
+    }
+  }
+</style>
+<template>
+  <view class="productList">
+    <loading></loading>
+    <repeat for="{{list}}" key="index" index="index" item="item" className="item">
+        <view className="item">{{item.id}}:{{item.title}}</view>
+    </repeat>
+    <view>
+      <button @tap="addMore">加载更多</button>
+    </view>
+  </view>
+</template>
+<script>
+  import wepy from 'wepy'
+  import {connect} from 'wepy-redux'
+  import Loading from '@/components/loading'
+  import {getList} from '@/store/actions/product'
+  @connect({
+    list(state) {
+      return state.product.list
+    }
+  }, {
+    getList1:getList
+  })
+  export default class ProductList extends wepy.page {
+    data={};
+    components={
+      loading:Loading
+    };
+    methods={
+      addMore(){
+        this.methods.getList1(this.store);
+      }
+    }
+    onLoad(){
+      this.store = this.$parent.globalData.store
+    }
+  }
+</script>

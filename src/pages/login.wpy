@@ -18,8 +18,6 @@
   // 在异步函数中更新数据的时，必须手动调用$apply方法，才会触发脏数据检查流程的运行
   @connect({
     isLogin(state) {
-      console.log('=======')
-      console.log(state)
       return state.login.isLogin
     }
   }, {
