@@ -11,10 +11,8 @@
 
 <script>
   /* eslint-disable no-undef */
-
   import wepy from 'wepy'
   import 'wepy-async-function'
-  import Promise from 'promise-polyfill'
   import { setStore } from 'wepy-redux'
   import 'wepy-async-function'
   import configStore from './store'

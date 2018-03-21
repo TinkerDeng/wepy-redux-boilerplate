@@ -8,12 +8,9 @@ import wepy from 'wepy'
 import Config from '../config'
 import Promise from 'promise-polyfill'
 
-class Point{
-
-}
-const point=new Point();
-console.log(point.__proto__);
-
+import * as mathod from './test';
+console.log(mathod);
+console.log("=========");
 /**
  *
  * @param {*} api 请求的url（必填）
