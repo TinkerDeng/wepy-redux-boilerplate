@@ -3,7 +3,7 @@
 #### 下载
 
 ```console
-git clone https://github.com/xiaopihaidenger/react-mobx-boilerplate.git
+git clone https://github.com/xiaopihaidenger/wepy-redux-boilerplate.git
 ```
 #### 安装
 
